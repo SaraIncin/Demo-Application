@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.33
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: demo_database
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: secret
+    healthcheck:
+      test: "mysqladmin ping -u root -p$${MYSQL_ROOT_PASSWORD}"
+
+
+  eureka-server:
+    image: eureka 
+    restart: always
+    container_name: eureka
+    ports:
+      - '8761:8761'
+    networks:
+      - 'dockernetflix-network'
+  zuul-service:
+    image: zuul 
+    restart: always
+    container_name: zuul
+    ports:
+      - '7000:7000'
+    networks:
+      - 'dockernetflix-network'
+  greeting-microservice:
+    image: usersmicroservice 
+    restart: always
+    container_name: usersmicroservice
+    networks:
+      - 'dockernetflix-network'
+networks:
+  dockernetflix-network:
