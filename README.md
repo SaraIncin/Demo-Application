@@ -10,7 +10,16 @@ Spring Boot demo application - Spring Cloud, Spring Data, Spring Security, Oauth
 
 ## Run application with Maven
 
-Run the following command:
-  mvn clean install
+Open a terminal and Run the following command for each project:
 
+  `mvn clean install`
 
+## Docker
+
+Open a terminal and run
+
+  `docker-compose up -d`
+
+Wait to Docker containers to be up and running. To check it, run
+
+`docker-compose ps`
