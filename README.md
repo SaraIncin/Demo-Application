@@ -11,6 +11,5 @@ Spring Boot demo application - Spring Cloud, Spring Data, Spring Security, Oauth
 ## Run application with Maven
 
 Run the following command:
-  mvn clean install
-
+  `mvn clean install`
 
